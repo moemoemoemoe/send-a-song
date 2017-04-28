@@ -57,7 +57,7 @@
 							
 							@endif</span>
 							</li>
-							<li class="active"><a href="player.html"><span class="nav-icon"><i class="material-icons">play_circle_outline</i></span> <span class="nav-text">Discover</span></a>
+							<li class="active"><a href="{!! route('home') !!}"><span class="nav-icon"><i class="material-icons">play_circle_outline</i></span> <span class="nav-text">Discover</span></a>
 							</li>
 							<li><a href="browse.html"><span class="nav-icon"><i class="material-icons">sort</i></span> <span class="nav-text">Browse</span></a>
 							</li>

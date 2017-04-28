@@ -19,6 +19,20 @@ class GuestController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+     public function index()
+    {
+Session::forget('uniqueid_profile');
+        $artist = Artist::where('is_active' , 1)->orderBy('id' , 'DESC')->paginate(12);
+        $artists = Artist::where('is_active' , 1)->orderBy('id' , 'DESC')->get();
+
+        $songs_most = Song::with('artist')->where('is_active', 1)->orderBy('number_of_send' ,'DESC')->paginate(10);
+        $songs = Song::with('artist')->where('is_active', 1)->orderBy('id', 'DESC')->get();
+        $songsasc = Song::with('artist')->where('is_active', 1)->orderBy('id', 'ASC')->paginate(10);
+        $categories = Category::where('is_active', 1)->get();
+        $newsongs = Song::with('artist')->where('is_active', 1)->where('is_new', 1)->orderBy('id', 'DESC')->paginate(4);
+        $newsongsone = Song::with('artist')->where('is_active', 1)->where('is_new', 1)->orderBy('id', 'ASC')->paginate(4);
+        return view('layouts.layout',compact('songs','newsongs','categories','songs_most','artist','newsongsone','songsasc','artists'));
+    }
    public function search($key)
    {
 $search_res = Song::where('original_name',"LIKE","%$key%")->orderBy('id' , 'DESC')->paginate(4);
@@ -35,20 +49,7 @@ return view('guest.search',compact('search_res','search_res_count','keyword','so
         $data = Song::select("original_name as name")->where("original_name","LIKE","%{$request->input('query')}%")->get();
         return response()->json($data);
     }
-    public function index()
-    {
-Session::forget('uniqueid_profile');
-        $artist = Artist::where('is_active' , 1)->orderBy('id' , 'DESC')->paginate(12);
-        $artists = Artist::where('is_active' , 1)->orderBy('id' , 'DESC')->get();
-
-        $songs_most = Song::with('artist')->where('is_active', 1)->orderBy('number_of_send' ,'DESC')->paginate(10);
-        $songs = Song::with('artist')->where('is_active', 1)->orderBy('id', 'DESC')->get();
-        $songsasc = Song::with('artist')->where('is_active', 1)->orderBy('id', 'ASC')->paginate(10);
-        $categories = Category::where('is_active', 1)->get();
-        $newsongs = Song::with('artist')->where('is_active', 1)->where('is_new', 1)->orderBy('id', 'DESC')->paginate(4);
-        $newsongsone = Song::with('artist')->where('is_active', 1)->where('is_new', 1)->orderBy('id', 'ASC')->paginate(4);
-        return view('layouts.layout',compact('songs','newsongs','categories','songs_most','artist','newsongsone','songsasc','artists'));
-    }
+   
 
     public function profile($uid)
     {

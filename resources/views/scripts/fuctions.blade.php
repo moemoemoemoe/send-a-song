@@ -9,6 +9,14 @@
 	
 	function modal_form_send(song_code){
 		songcode = song_code;
+		$('#phone_number_rec').val('');
+		$('#step_one').show();
+		$('#step_one_button').show();
+		$('#zip').show();
+				$('#step_two').hide();
+				$('#title').html('Please enter phone number receive');
+					$('#step_two_button').hide();
+
 		$('#test').html(songcode);
 		$('#song_name').html('You have choose '+songcode+'  to send ')
 		$('#modal-send-rec').modal('show');

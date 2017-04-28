@@ -10,6 +10,13 @@
 	function modal_form_send(song_code){
 		var uid = $("#uid_pro").val();
 		//window.alert(uid);
+		$('#phone_number_rec').val('');
+		$('#step_one').show();
+		$('#step_one_button').show();
+		$('#zip').show();
+				$('#step_two').hide();
+					$('#step_two_button').hide();
+
 		songcode = song_code;
 		phonenumber = uid;
 		$('#test').html(songcode);
