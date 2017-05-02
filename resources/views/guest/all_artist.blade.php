@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-<!-- Mirrored from flatfull.com/themes/pulse/artist.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 24 Apr 2017 06:53:50 GMT -->
+<!-- Mirrored from flatfull.com/themes/pulse/player.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 24 Apr 2017 06:53:51 GMT -->
 
 <head>
-    <meta charset="utf-8">
-    <title>pulse - Music, Audio and Radio web application</title>
+    <meta charset="utf-8" >
+    <title>SendaSong | artist</title>
     <meta name="description" content="Music, Musician, Bootstrap">
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimal-ui">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -15,18 +15,23 @@
     <meta name="mobile-web-app-capable" content="yes">
     <link rel="shortcut icon" sizes="196x196" href="images/logo.png">
     <link rel="stylesheet" href="{{asset('css/animate.css/animate.min.css')}}" type="text/css">
+   
     <link rel="stylesheet" href="{{asset('css/glyphicons/glyphicons.css')}}" type="text/css">
     <link rel="stylesheet" href="{{asset('css/font-awesome/css/font-awesome.min.css')}}" type="text/css">
     <link rel="stylesheet" href="{{asset('css/material-design-icons/material-design-icons.css')}}" type="text/css">
     <link rel="stylesheet" href="{{asset('css/bootstrap/dist/css/bootstrap.min.css')}}" type="text/css">
-    <link rel="stylesheet" href="{{asset('css/styles/app.min.css')}}">
+  
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.1/bootstrap3-typeahead.min.js"></script>  
+ <link rel="stylesheet" href="{{asset('css/styles/app.min.css')}}">
+        <link rel="stylesheet" href="{{asset('css/styles/app.rtl.css')}}">
+    
+
 </head>
 
-<body>
-    <div class="app dk" id="app">
-       <div id="aside" class="app-aside modal fade nav-dropdown">
+<body style="direction: rtl;">
+    <div class="app dk" id="app" dir="rtl" >
+        <div id="aside" class="app-aside modal fade nav-dropdown" >
             <div class="left navside grey dk" data-layout="column">
                 <div class="navbar no-radius">
                     <a href="index.html" class="navbar-brand md">
@@ -42,12 +47,12 @@
     
       
         {!! $msg_user !!}
-@else pulse
+@else خدمة إرسال الأغاني
     @endif </span>
                     </a>
                 </div>
                 <div data-flex class="hide-scroll">
-                    <nav class="scroll nav-stacked nav-active-primary">
+                    <nav class="scroll nav-stacked nav-active-primary" >
                         <ul class="nav" data-ui-nav>
                             <li class="nav-header hidden-folded"><span class="text-xs text-muted">@if(Session::has('uniqueid_profile'))
                              <input type="hidden" id="uid_pro" value="{!!Session('phone')!!}" />
@@ -55,16 +60,13 @@
                             
                             @endif</span>
                             </li>
-                            <li class="active"><a href="{!! route('home') !!}"><span class="nav-icon"><i class="material-icons">play_circle_outline</i></span> <span class="nav-text">Discover</span></a>
+                            <li><a href="{!! route('home') !!}" ><span class="nav-icon"><i class="material-icons">play_circle_outline</i></span> <span class="nav-text">الصفحة الرئيسية</span></a>
                             </li>
-                            <li><a href="browse.html"><span class="nav-icon"><i class="material-icons">sort</i></span> <span class="nav-text">Browse</span></a>
+                            
+                            <li class="active"><a href="{!! route('all_artist') !!}"><span class="nav-icon"><i class="material-icons">portrait</i></span> <span class="nav-text">الفنانين</span></a>
                             </li>
-                            <li><a href="chart.html"><span class="nav-icon"><i class="material-icons">trending_up</i></span> <span class="nav-text">Charts</span></a>
-                            </li>
-                            <li><a href="{!! route('all_artist') !!}"><span class="nav-icon"><i class="material-icons">portrait</i></span> <span class="nav-text">Artist</span></a>
-                            </li>
-                            <li><input type="text" class="form-control typeahead" id="keyword" placeholder="Type keyword" style="text-align: center;" /> 
-                            <span class="input-group-btn"><div class="form-control" style="text-align: center;" onclick="search()">Search</div></span>
+                            <li><input type="text" class="form-control typeahead" id="keyword" placeholder="Type keyword" style="text-align: center;" autocomplete="off"/> 
+                            <span class="input-group-btn"><div class="form-control" style="text-align: center;" onclick="search()">البحث</div></span>
                             </li>
                             <li class="nav-header hidden-folded m-t"><span class="text-xs text-muted">Your collection</span>
                             </li>
@@ -77,6 +79,9 @@
                         </ul>
                     </nav>
                 </div>
+               
+            </div>
+        </div>
         <div id="content" class="app-content white bg box-shadow-z2" role="main">
             <div class="app-header hidden-lg-up white lt box-shadow-z1">
                 <div class="navbar">
@@ -88,9 +93,9 @@
                             <circle cx="13" cy="13" r="2" fill="#ffffff" class="brand-animate" />
                             <path d="M 14 24 L 24 24 L 14 44 Z" fill="#FFFFFF" />
                             <circle cx="24" cy="24" r="3" fill="#000000" />
-                        </svg> <img src="images/logo.png" alt="." class="hide"> <span class="hidden-folded inline">pulse</span>
+                        </svg> <img src="{{asset('images/logo.png')}}" alt="." class="hide"> <span class="hidden-folded inline">خدمة إرسال الأغاني</span>
                     </a>
-                    <ul class="nav navbar-nav pull-right">
+                    <ul class="nav navbar-nav pull-right" style="direction: ltr">
                         <li class="nav-item"><a data-toggle="modal" data-target="#aside" class="nav-link"><i class="material-icons">menu</i></a>
                         </li>
                     </ul>
@@ -101,11 +106,32 @@
             </div>
             <div class="app-body" id="view">
                 <div class="page-content">
+                    <div class="padding p-b-0">
+                        <div class="page-title m-b">
+
+                         @if(session()->has('message'))
+    <h4 class="inline m-a-0">{!! session()->get('message') !!}</h4>
+    @endif
+
+    @if(\Request::route()->getName() == 'profile')
+    <h4 class="inline m-a-0" style="font-size: 1em;float: right;"><i class="fa fa-calendar"></i>&nbsp &nbsp{!! $msg_date !!}</h4>
+<br/>
+       <h4 class="inline m-a-0" style="font-size: 1em;float: right;"><i class="fa fa-shopping-cart" >
+        
+       </i>&nbsp &nbsp{!!$msg !!}</h4>
+       
+
+    
+    @endif
+<br/>
+
+          <div class="app-body" id="view">
+                <div class="page-content">
                     <div class="row-col">
                         <div class="col-lg-9 b-r no-border-md">
                             <div class="padding">
                                 <div class="page-title m-b">
-                                    <h1 class="inline m-a-0">Artists</h1>
+                                    <h1 class="inline m-a-0">الفنانين</h1>
                                    
                                 </div>
                                 <div data-ui-jp="jscroll" data-ui-options="{
@@ -131,7 +157,7 @@
                                         
                                      
                                       @endforeach
-                                    </div><a href="scroll.author.html" class="btn btn-sm white rounded jscroll-next">Show More</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -139,162 +165,49 @@
                     </div>
                 </div>
             </div>
-        </div>
-     
-        <div class="modal white lt fade" id="search-modal" data-backdrop="false"><a data-dismiss="modal" class="text-muted text-lg p-x modal-close-btn">&times;</a>
-            <div class="row-col">
-                <div class="p-a-lg h-v row-cell v-m">
-                    <div class="row">
-                        <div class="col-md-8 offset-md-2">
-                            <form action="http://flatfull.com/themes/pulse/search.html" class="m-b-md">
-                                <div class="input-group input-group-lg">
-                                    <input type="text" class="form-control" placeholder="Type keyword" data-ui-toggle-class="hide" data-ui-target="#search-result"> <span class="input-group-btn"><button class="btn b-a no-shadow white" type="submit">Search</button></span>
-                                </div>
-                            </form>
-                            <div id="search-result" class="animated fadeIn">
-                                <p class="m-b-md"><strong>23</strong> <span class="text-muted">Results found for:</span><strong>Keyword</strong>
-                                </p>
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <div class="row item-list item-list-sm item-list-by m-b">
-                                            <div class="col-xs-12">
-                                                <div class="item r" data-id="item-5" data-src="http://streaming.radionomy.com/JamendoLounge">
-                                                    <div class="item-media">
-                                                        <a href="track.detail.html" class="item-media-content" style="background-image: url('images/b4.jpg')"></a>
-                                                    </div>
-                                                    <div class="item-info">
-                                                        <div class="item-title text-ellipsis"><a href="track.detail.html">Live Radio</a>
-                                                        </div>
-                                                        <div class="item-author text-sm text-ellipsis"><a href="artist.detail.html" class="text-muted">Radionomy</a>
-                                                        </div>
-                                                        <div class="item-meta text-sm text-muted"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-xs-12">
-                                                <div class="item r" data-id="item-2" data-src="http://api.soundcloud.com/tracks/259445397/stream?client_id=a10d44d431ad52868f1bce6d36f5234c">
-                                                    <div class="item-media">
-                                                        <a href="track.detail.html" class="item-media-content" style="background-image: url('images/b1.jpg')"></a>
-                                                    </div>
-                                                    <div class="item-info">
-                                                        <div class="item-title text-ellipsis"><a href="track.detail.html">Fireworks</a>
-                                                        </div>
-                                                        <div class="item-author text-sm text-ellipsis"><a href="artist.detail.html" class="text-muted">Kygo</a>
-                                                        </div>
-                                                        <div class="item-meta text-sm text-muted"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-xs-12">
-                                                <div class="item r" data-id="item-6" data-src="http://api.soundcloud.com/tracks/236107824/stream?client_id=a10d44d431ad52868f1bce6d36f5234c">
-                                                    <div class="item-media">
-                                                        <a href="track.detail.html" class="item-media-content" style="background-image: url('images/b5.jpg')"></a>
-                                                    </div>
-                                                    <div class="item-info">
-                                                        <div class="item-title text-ellipsis"><a href="track.detail.html">Body on me</a>
-                                                        </div>
-                                                        <div class="item-author text-sm text-ellipsis"><a href="artist.detail.html" class="text-muted">Rita Ora</a>
-                                                        </div>
-                                                        <div class="item-meta text-sm text-muted"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-xs-12">
-                                                <div class="item r" data-id="item-11" data-src="http://api.soundcloud.com/tracks/218060449/stream?client_id=a10d44d431ad52868f1bce6d36f5234c">
-                                                    <div class="item-media">
-                                                        <a href="track.detail.html" class="item-media-content" style="background-image: url('images/b10.jpg')"></a>
-                                                    </div>
-                                                    <div class="item-info">
-                                                        <div class="item-title text-ellipsis"><a href="track.detail.html">Spring</a>
-                                                        </div>
-                                                        <div class="item-author text-sm text-ellipsis"><a href="artist.detail.html" class="text-muted">Pablo Nouvelle</a>
-                                                        </div>
-                                                        <div class="item-meta text-sm text-muted"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="row item-list item-list-sm item-list-by m-b">
-                                            <div class="col-xs-12">
-                                                <div class="item">
-                                                    <div class="item-media rounded">
-                                                        <a href="artist.detail.html" class="item-media-content" style="background-image: url('images/a3.jpg')"></a>
-                                                    </div>
-                                                    <div class="item-info">
-                                                        <div class="item-title text-ellipsis"><a href="artist.detail.html">Joe Holmes</a>
-                                                            <div class="text-sm text-muted">24 songs</div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-xs-12">
-                                                <div class="item">
-                                                    <div class="item-media rounded">
-                                                        <a href="artist.detail.html" class="item-media-content" style="background-image: url('images/b0.jpg')"></a>
-                                                    </div>
-                                                    <div class="item-info">
-                                                        <div class="item-title text-ellipsis"><a href="artist.detail.html">Jeremy Scott</a>
-                                                            <div class="text-sm text-muted">14 songs</div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-xs-12">
-                                                <div class="item">
-                                                    <div class="item-media rounded">
-                                                        <a href="artist.detail.html" class="item-media-content" style="background-image: url('images/a0.jpg')"></a>
-                                                    </div>
-                                                    <div class="item-info">
-                                                        <div class="item-title text-ellipsis"><a href="artist.detail.html">Crystal Guerrero</a>
-                                                            <div class="text-sm text-muted">12 songs</div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-xs-12">
-                                                <div class="item">
-                                                    <div class="item-media rounded">
-                                                        <a href="artist.detail.html" class="item-media-content" style="background-image: url('images/a5.jpg')"></a>
-                                                    </div>
-                                                    <div class="item-info">
-                                                        <div class="item-title text-ellipsis"><a href="artist.detail.html">Judy Woods</a>
-                                                            <div class="text-sm text-muted">23 songs</div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div id="top-search" class="btn-groups"><strong class="text-muted">Top searches:</strong> <a href="#" class="btn btn-xs white">Happy</a> <a href="#" class="btn btn-xs white">Music</a> <a href="#" class="btn btn-xs white">Weekend</a> <a href="#" class="btn btn-xs white">Summer</a> <a href="#" class="btn btn-xs white">Holiday</a> <a href="#" class="btn btn-xs white">Blue</a> <a href="#" class="btn btn-xs white">Soul</a> <a href="#" class="btn btn-xs white">Calm</a> <a href="#" class="btn btn-xs white">Nice</a> <a href="#" class="btn btn-xs white">Home</a> <a href="#" class="btn btn-xs white">SLeep</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+</div>
+</div>
+</div>
+
+
+<div id="share-modal" class="modal fade animate">
+    <div class="modal-dialog">
+        <div class="modal-content fade-down">
+            <div class="modal-header">
+                <h5 class="modal-title">إرسال</h5>
             </div>
-        </div>
-        <div id="share-modal" class="modal fade animate">
-            <div class="modal-dialog">
-                <div class="modal-content fade-down">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Share</h5>
-                    </div>
-                    <div class="modal-body p-lg">
-                        <div id="share-list" class="m-b"><a href="#" class="btn btn-icon btn-social rounded btn-social-colored indigo" title="Facebook"><i class="fa fa-facebook"></i> <i class="fa fa-facebook"></i></a> <a href="#" class="btn btn-icon btn-social rounded btn-social-colored light-blue" title="Twitter"><i class="fa fa-twitter"></i> <i class="fa fa-twitter"></i></a> <a href="#" class="btn btn-icon btn-social rounded btn-social-colored red-600" title="Google+"><i class="fa fa-google-plus"></i> <i class="fa fa-google-plus"></i></a> <a href="#" class="btn btn-icon btn-social rounded btn-social-colored blue-grey-600" title="Trumblr"><i class="fa fa-tumblr"></i> <i class="fa fa-tumblr"></i></a> <a href="#" class="btn btn-icon btn-social rounded btn-social-colored red-700" title="Pinterst"><i class="fa fa-pinterest"></i> <i class="fa fa-pinterest"></i></a>
-                        </div>
-                        <div>
-                            <input class="form-control" value="http://plamusic.com/slug">
-                        </div>
-                    </div>
+            <div class="modal-body p-lg">
+                <div id="share-list" class="m-b"><a href="#" class="btn btn-icon btn-social rounded btn-social-colored indigo" title="Facebook"><i class="fa fa-facebook"></i> <i class="fa fa-facebook"></i></a> <a href="#" class="btn btn-icon btn-social rounded btn-social-colored light-blue" title="Twitter"><i class="fa fa-twitter"></i> <i class="fa fa-twitter"></i></a> <a href="#" class="btn btn-icon btn-social rounded btn-social-colored red-600" title="Google+"><i class="fa fa-google-plus"></i> <i class="fa fa-google-plus"></i></a> <a href="#" class="btn btn-icon btn-social rounded btn-social-colored blue-grey-600" title="Trumblr"><i class="fa fa-tumblr"></i> <i class="fa fa-tumblr"></i></a> <a href="#" class="btn btn-icon btn-social rounded btn-social-colored red-700" title="Pinterst"><i class="fa fa-pinterest"></i> <i class="fa fa-pinterest"></i></a>
+                </div>
+                <div>
+                    <input class="form-control" value="http://plamusic.com/slug">
                 </div>
             </div>
         </div>
     </div>
-    <script src="scripts/app.min.js"></script>
+</div>
+</div>
+<script type="text/javascript">
+    var path = "{{ route('autocomplete') }}";
+    $('input.typeahead').typeahead({
+        source:  function (query, process) {
+        return $.get(path, { query: query }, function (data) {
+                return process(data);
+            });
+        }
+    });
+</script>
+<script src="{{asset('scripts/app.min.js')}}"></script>
+@if(Session::has('uniqueid_profile'))
+
+@include('modales/formsend_profile')
+@include('scripts/fuctions_profile')
+@else 
+@include('modales/formsend')
+@include('scripts/fuctions')
+@endif
+
 </body>
-<!-- Mirrored from flatfull.com/themes/pulse/artist.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 24 Apr 2017 06:53:51 GMT -->
+<!-- Mirrored from flatfull.com/themes/pulse/player.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 24 Apr 2017 06:53:51 GMT -->
 
 </html>

@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html >
+<html lang="en" >
 <!-- Mirrored from flatfull.com/themes/pulse/player.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 24 Apr 2017 06:53:51 GMT -->
 
 <head>
@@ -19,16 +19,22 @@
 	<link rel="stylesheet" href="{{asset('css/font-awesome/css/font-awesome.min.css')}}" type="text/css">
 	<link rel="stylesheet" href="{{asset('css/material-design-icons/material-design-icons.css')}}" type="text/css">
 	<link rel="stylesheet" href="{{asset('css/bootstrap/dist/css/bootstrap.min.css')}}" type="text/css">
+
 	<link rel="stylesheet" href="{{asset('css/styles/app.min.css')}}">
+		<link rel="stylesheet" href="{{asset('css/styles/app.rtl.css')}}">
+	
+
+
+	
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.1/bootstrap3-typeahead.min.js"></script>  
 
 
 </head>
 
-<body>
+<body style="direction: rtl;">
 	<div class="app dk" id="app">
-		<div id="aside" class="app-aside modal fade nav-dropdown">
+		<div id="aside" class="app-aside modal fade nav-dropdown"  dir="rtl">
 			<div class="left navside grey dk" data-layout="column">
 				<div class="navbar no-radius">
 					<a href="index.html" class="navbar-brand md">
@@ -44,7 +50,7 @@
     
       
         {!! $msg_user !!}
-@else pulse
+@else خدمة إرسال الأغاني
     @endif </span>
 					</a>
 				</div>
@@ -57,16 +63,13 @@
 							
 							@endif</span>
 							</li>
-							<li class="active"><a href="{!! route('home') !!}"><span class="nav-icon"><i class="material-icons">play_circle_outline</i></span> <span class="nav-text">Discover</span></a>
+							<li class="active"><a href="{!! route('home') !!}"><span class="nav-icon"><i class="material-icons">play_circle_outline</i></span> <span class="nav-text">الصفحة الرئيسية</span></a>
 							</li>
-							<li><a href="browse.html"><span class="nav-icon"><i class="material-icons">sort</i></span> <span class="nav-text">Browse</span></a>
+							
+							<li><a href="{!! route('all_artist') !!}"><span class="nav-icon"><i class="material-icons">portrait</i></span> <span class="nav-text">الفنانين</span></a>
 							</li>
-							<li><a href="chart.html"><span class="nav-icon"><i class="material-icons">trending_up</i></span> <span class="nav-text">Charts</span></a>
-							</li>
-							<li><a href="{!! route('all_artist') !!}"><span class="nav-icon"><i class="material-icons">portrait</i></span> <span class="nav-text">Artist</span></a>
-							</li>
-							<li><input type="text" class="form-control typeahead" id="keyword" placeholder="Type keyword" style="text-align: center;" /> 
-							<span class="input-group-btn"><div class="form-control" style="text-align: center;" onclick="search()">Search</div></span>
+							<li><input type="text" class="form-control typeahead" id="keyword" placeholder="Type keyword" style="text-align: center;" autocomplete="off" /> 
+							<span class="input-group-btn"><div class="form-control" style="text-align: center;" onclick="search()">البحث</div></span>
 							</li>
 							<li class="nav-header hidden-folded m-t"><span class="text-xs text-muted">Your collection</span>
 							</li>
@@ -79,13 +82,7 @@
 						</ul>
 					</nav>
 				</div>
-				<div data-flex-no-shrink>
-					<div class="nav-fold dropup"><a data-toggle="dropdown"><span class="pull-left"><img src="{{asset('images/a3.jpg')}}" alt="..." class="w-32 img-circle"></span> <span class="clear hidden-folded p-x p-y-xs"><span class="block _500 text-ellipsis">Rachel Platten</span></span></a>
-						<div class="dropdown-menu w dropdown-menu-scale"><a class="dropdown-item" href="profile.html#profile"><span>Profile</span></a> <a class="dropdown-item" href="profile.html#tracks"><span>Tracks</span></a> <a class="dropdown-item" href="profile.html#playlists"><span>Playlists</span></a> <a class="dropdown-item" href="profile.html#likes"><span>Likes</span></a>
-							<div class="dropdown-divider"></div><a class="dropdown-item" href="docs.html">Need help?</a> <a class="dropdown-item" href="signin.html">Sign out</a>
-						</div>
-					</div>
-				</div>
+			
 			</div>
 		</div>
 		<div id="content" class="app-content white bg box-shadow-z2" role="main">
@@ -99,19 +96,19 @@
 							<circle cx="13" cy="13" r="2" fill="#ffffff" class="brand-animate" />
 							<path d="M 14 24 L 24 24 L 14 44 Z" fill="#FFFFFF" />
 							<circle cx="24" cy="24" r="3" fill="#000000" />
-						</svg> <img src="{{asset('images/logo.png')}}" alt="." class="hide"> <span class="hidden-folded inline">pulse</span>
+						</svg> <img src="{{asset('images/logo.png')}}" alt="." class="hide"> <span class="hidden-folded inline">خدمة إرسال الأغاني</span>
 					</a>
-					<ul class="nav navbar-nav pull-right">
+					<ul class="nav navbar-nav pull-right" style="direction: ltr">
 						<li class="nav-item"><a data-toggle="modal" data-target="#aside" class="nav-link"><i class="material-icons">menu</i></a>
 						</li>
 					</ul>
 				</div>
 			</div>
-			<div class="app-footer app-player grey bg">
+			<div class="app-footer app-player grey bg" >
 				<div class="playlist" style="width:100%"></div>
 			</div>
-			<div class="app-body" id="view">
-				<div class="page-content">
+			<div class="app-body" id="view" >
+				<div class="page-content" >
 					<div class="padding p-b-0">
 						<div class="page-title m-b">
 
@@ -130,10 +127,10 @@
     
     @endif
 <br/>
-							<h1 class="inline m-a-0">News</h1>
+							<h1 class="inline m-a-0"  >اغاني جديدة</h1>
 						</div>
 						<div class="row row-sm item-masonry item-info-overlay">
-							<div class="col-sm-6 text-white m-b-sm">
+							<div class="col-sm-6 text-white m-b-sm" style="direction: ltr">
 								<div class="owl-carousel owl-theme owl-dots-sm owl-dots-bottom-left" data-ui-jp="owlCarousel" data-ui-options="{
 								items: 1
 								,loop: true
@@ -152,7 +149,7 @@
 									</div>
 								</div>
 								<div class="item-info">
-									<div class="item-overlay bottom text-right"><div class="btn-favorite"><i onclick="modal_form_send('{{$newsong->song_code}}')" class="fa fa-share">&nbsp;</i><span style="font-weight:400;color:white;" onclick="modal_form_send('{{$newsong->song_code}}')" >Share</span></div> 
+									<div class="item-overlay bottom text-right"><div class="btn-favorite"><i onclick="modal_form_send('{{$newsong->song_code}}')" class="fa fa-share">&nbsp;</i><span style="font-weight:400;color:white;" onclick="modal_form_send('{{$newsong->song_code}}')" >إرسال </span></div> 
 									
 									</div>
 									<div class="item-title text-ellipsis"><a href=" ">{{$newsong->original_name}}</a>
@@ -177,7 +174,7 @@
 								</div>
 							</div>
 							<div class="item-info">
-								<div class="item-overlay bottom text-right"> <i onclick="modal_form_send('{{$one->song_code}}')" class="fa fa-share">&nbsp;</i><span style="font-weight:400;color:white;" onclick="modal_form_send('{{$one->song_code}}')" >Share</span></a>
+								<div class="item-overlay bottom text-right"> <i onclick="modal_form_send('{{$one->song_code}}')" class="fa fa-share">&nbsp;</i><span style="font-weight:400;color:white;" onclick="modal_form_send('{{$one->song_code}}')" >إرسال </span></a>
 									<div class="dropdown-menu pull-right black lt"></div>
 								</div>
 								<div class="item-title text-ellipsis"><a href=" ">{{$one->artist->original_name}}</a>
@@ -192,11 +189,11 @@
 				</div>
 
 			</div>
-			<div class="row-col">
-				<div class="col-lg-9 b-r no-border-md">
+			<div class="row-col" >
+				<div class="col-lg-9 b-r no-border-md" >
 					<div class="padding">
-						<h2 class="widget-title h4 m-b">Most Sending</h2>
-						<div class="owl-carousel owl-theme owl-dots-center" data-ui-jp="owlCarousel" data-ui-options="{
+						<h2 class="widget-title h4 m-b">الأكثر ارسلا </h2>
+						<div style="direction: ltr" class="owl-carousel owl-theme owl-dots-center" data-ui-jp="owlCarousel" data-ui-options="{
 						margin: 20,
 						responsiveClass:true,
 						responsive:{
@@ -210,7 +207,7 @@
 		}"> 
 
 		@foreach($songs_most as $most)
-		<div class="">
+		<div class="" style="direction: ltr">
 			<div class="item r" data-id="item-2" data-src="http://api.soundcloud.com/tracks/259445397/stream?client_id=a10d44d431ad52868f1bce6d36f5234c">
 				<div class="item-media item-media-4by3">
 					<a href=" " class="item-media-content" style="background-image: url('{{asset('images/artists/'.$most->artist->photo_name)}}')"></a>
@@ -219,7 +216,7 @@
 					</div>
 				</div>
 				<div class="item-info">
-					<div class="item-overlay bottom text-right"><i onclick="modal_form_send('{{$most->song_code}}')" class="fa fa-share">&nbsp;</i><span style="font-weight:400;color:white;" onclick="modal_form_send('{{$most->song_code}}')" >Share</span></a>
+					<div class="item-overlay bottom text-right"><i onclick="modal_form_send('{{$most->song_code}}')" class="fa fa-share">&nbsp;</i><span style="font-weight:400;color:white;" onclick="modal_form_send('{{$most->song_code}}')" >إرسال </span></a>
 						<div class="dropdown-menu pull-right black lt"></div>
 					</div>
 					<div class="item-title text-ellipsis"><a href=" ">{{$most->artist->original_name}}</a>
@@ -232,7 +229,7 @@
 
 		@endforeach
 	</div>
-	<h2 class="widget-title h4 m-b inline">Top Artist</h2>
+	<h2 class="widget-title h4 m-b inline">أشهر الفنانين </h2>
 	<div class="dropdown inline">
                                         <button class="btn btn-sm no-bg h4 m-y-0 v-b dropdown-toggle text-primary" data-toggle="dropdown">All</button>
                                         <div class="dropdown-menu"><a href="#" class="dropdown-item active">All</a>
@@ -241,10 +238,10 @@
                                          @endforeach
                                         </div>
                                     </div>
-	<div class="row">
+	<div class="row" style="direction: rtl">
 
 		@foreach($artist as $art)  
-		<div class="col-xs-4 col-sm-4 col-md-3">
+		<div class="col-xs-4 col-sm-4 col-md-3" >
 			<div class="item r" data-id="item-5" data-src="http://streaming.radionomy.com/JamendoLounge">
 				<div class="item-media">
 					<a href="{!! route('artist', ['id'=>$art->id]) !!}" class="item-media-content" style="background-image: url('{{asset('images/artists/'.$art->photo_name)}}')"></a>
@@ -263,7 +260,7 @@
 
 		@endforeach
 	</div>
-	<h2 class="widget-title h4 m-b">Songs</h2>
+	<h2 class="widget-title h4 m-b">أغاني </h2>
 	<div class="row item-list item-list-md m-b">
 
 		@foreach($songsasc as $asc)
@@ -278,7 +275,7 @@
 				<div class="item-info">
 					<div class="item-overlay bottom text-right">
 
-					<i onclick="modal_form_send('{{$asc->song_code}}')" class="fa fa-share">&nbsp;</i><span style="font-weight:400;color:#000;" onclick="modal_form_send('{{$asc->song_code}}')" >Share</span>
+					<i onclick="modal_form_send('{{$asc->song_code}}')" class="fa fa-share">&nbsp;</i><span style="font-weight:400;color:#000;" onclick="modal_form_send('{{$asc->song_code}}')" >إرسال </span>
 
 						<div class="dropdown-menu pull-right black lt"></div>
 					</div>
@@ -295,9 +292,9 @@
 	</div>
 </div>
 </div>
-<div class="col-lg-3 w-xxl w-auto-md">
+<div class="col-lg-3 w-xxl w-auto-md" style="direction: rtl">
 	<div class="padding" style="bottom: 60px" data-ui-jp="stick_in_parent">
-		<h6 class="text text-muted">Categories</h6>
+		<h6 class="text text-muted">الفئات </h6>
 		<div class="row item-list item-list-sm m-b">
 
 			@foreach($categories as $cat)
@@ -319,9 +316,10 @@
 
 
 		</div>
-		<h6 class="text text-muted">Subscrption</h6>
-		<div class="btn-groups">  <ul class="list-group">
-                  <li class="list-group-item">اختر الاغنية التي تود ارسالها</li>
+		<h6 class="text text-muted">كيفية الإشتراك</h6>
+		<div class="btn-groups"  style="padding: 0 0 0 0" > 
+		 <ul class="list-group">
+                  <li class="list-group-item" >اختر الاغنية التي تود ارسالها</li>
                   <li class="list-group-item">ادخل رقم الشخص الذي تود ارسال الاغنية اليه</li>
                   <li class="list-group-item">ادخل رقم هاتفك</li>
                   <li class="list-group-item">ادخل رمز التوثيق الذي سيصلك عبر رسالة قصيرة</li>
@@ -345,7 +343,7 @@
 	<div class="modal-dialog">
 		<div class="modal-content fade-down">
 			<div class="modal-header">
-				<h5 class="modal-title">Share</h5>
+				<h5 class="modal-title">إرسال </h5>
 			</div>
 			<div class="modal-body p-lg">
 				<div id="share-list" class="m-b"><a href="#" class="btn btn-icon btn-social rounded btn-social-colored indigo" title="Facebook"><i class="fa fa-facebook"></i> <i class="fa fa-facebook"></i></a> <a href="#" class="btn btn-icon btn-social rounded btn-social-colored light-blue" title="Twitter"><i class="fa fa-twitter"></i> <i class="fa fa-twitter"></i></a> <a href="#" class="btn btn-icon btn-social rounded btn-social-colored red-600" title="Google+"><i class="fa fa-google-plus"></i> <i class="fa fa-google-plus"></i></a> <a href="#" class="btn btn-icon btn-social rounded btn-social-colored blue-grey-600" title="Trumblr"><i class="fa fa-tumblr"></i> <i class="fa fa-tumblr"></i></a> <a href="#" class="btn btn-icon btn-social rounded btn-social-colored red-700" title="Pinterst"><i class="fa fa-pinterest"></i> <i class="fa fa-pinterest"></i></a>
@@ -369,6 +367,8 @@
     });
 </script>
 <script src="{{asset('scripts/app.min.js')}}"></script>
+<script src="{{asset('scripts/rtl.js')}}"></script>
+
 @if(Session::has('uniqueid_profile'))
 
 @include('modales/formsend_profile')

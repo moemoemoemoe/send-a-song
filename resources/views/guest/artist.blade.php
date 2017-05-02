@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>pulse - Music, Audio and Radio web application</title>
+    <title>Artist</title>
     <meta name="description" content="Music, Musician, Bootstrap">
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimal-ui">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -20,11 +20,15 @@
     <link rel="stylesheet" href="{{asset('css/material-design-icons/material-design-icons.css')}}" type="text/css">
     <link rel="stylesheet" href="{{asset('css/bootstrap/dist/css/bootstrap.min.css')}}" type="text/css">
     <link rel="stylesheet" href="{{asset('css/styles/app.min.css')}}">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.1/bootstrap3-typeahead.min.js"></script>  
+<link rel="stylesheet" href="{{asset('css/styles/app.min.css')}}">
+        <link rel="stylesheet" href="{{asset('css/styles/app.rtl.css')}}">
 
 </head>
 
-<body>
-    <div class="app dk" id="app">
+<body style="direction: rtl;">
+   <div class="app dk" id="app">
         <div id="aside" class="app-aside modal fade nav-dropdown">
             <div class="left navside grey dk" data-layout="column">
                 <div class="navbar no-radius">
@@ -36,23 +40,31 @@
                             <circle cx="13" cy="13" r="2" fill="#ffffff" class="brand-animate" />
                             <path d="M 14 24 L 24 24 L 14 44 Z" fill="#FFFFFF" />
                             <circle cx="24" cy="24" r="3" fill="#000000" />
-                        </svg> <img src="images/logo.png" alt="." class="hide"> <span class="hidden-folded inline">pulse</span>
+                            
+                        </svg> <img src="{{asset('images/logo.png')}}" alt="." class="hide"> <span class="hidden-folded inline">@if(\Request::route()->getName() == 'profile')
+    
+      
+        {!! $msg_user !!}
+@else خدمة إرسال الأغاني
+    @endif </span>
                     </a>
                 </div>
                 <div data-flex class="hide-scroll">
                     <nav class="scroll nav-stacked nav-active-primary">
                         <ul class="nav" data-ui-nav>
-                            <li class="nav-header hidden-folded"><span class="text-xs text-muted">Main</span>
+                            <li class="nav-header hidden-folded"><span class="text-xs text-muted">@if(Session::has('uniqueid_profile'))
+                             <input type="hidden" id="uid_pro" value="{!!Session('phone')!!}" />
+                            
+                            
+                            @endif</span>
+                           </li>
+                            <li><a href="{!! route('home') !!}"><span class="nav-icon"><i class="material-icons">play_circle_outline</i></span> <span class="nav-text">الصفحة الرئيسية</span></a>
                             </li>
-                            <li><a href="player.html"><span class="nav-icon"><i class="material-icons">play_circle_outline</i></span> <span class="nav-text">Discover</span></a>
+                           
+                            <li><a href="{!! route('all_artist') !!}"><span class="nav-icon"><i class="material-icons">portrait</i></span> <span class="nav-text">الفنانين</span></a>
                             </li>
-                            <li><a href="browse.html"><span class="nav-icon"><i class="material-icons">sort</i></span> <span class="nav-text">Browse</span></a>
-                            </li>
-                            <li><a href="chart.html"><span class="nav-icon"><i class="material-icons">trending_up</i></span> <span class="nav-text">Charts</span></a>
-                            </li>
-                            <li><a href="artist.html"><span class="nav-icon"><i class="material-icons">portrait</i></span> <span class="nav-text">Artist</span></a>
-                            </li>
-                            <li><a data-toggle="modal" data-target="#search-modal"><span class="nav-icon"><i class="material-icons">search</i></span> <span class="nav-text">Search</span></a>
+                            <li><input type="text" class="form-control typeahead" id="keyword" placeholder="Type keyword" style="text-align: center;" /> 
+                            <span class="input-group-btn"><div class="form-control" style="text-align: center;" onclick="search()">البحث</div></span>
                             </li>
                             <li class="nav-header hidden-folded m-t"><span class="text-xs text-muted">Your collection</span>
                             </li>
@@ -65,13 +77,7 @@
                         </ul>
                     </nav>
                 </div>
-                <div data-flex-no-shrink>
-                    <div class="nav-fold dropup"><a data-toggle="dropdown"><span class="pull-left"><img src="images/a3.jpg" alt="..." class="w-32 img-circle"></span> <span class="clear hidden-folded p-x p-y-xs"><span class="block _500 text-ellipsis">Platten</span></span></a>
-                        <div class="dropdown-menu w dropdown-menu-scale"><a class="dropdown-item" href="profile.html#profile"><span>Profile</span></a> <a class="dropdown-item" href="profile.html#tracks"><span>Tracks</span></a> <a class="dropdown-item" href="profile.html#playlists"><span>Playlists</span></a> <a class="dropdown-item" href="profile.html#likes"><span>Likes</span></a>
-                            <div class="dropdown-divider"></div><a class="dropdown-item" href="docs.html">Need help?</a> <a class="dropdown-item" href="signin.html">Sign out</a>
-                        </div>
-                    </div>
-                </div>
+               
             </div>
         </div>
         <div id="content" class="app-content white bg box-shadow-z2" role="main">
@@ -85,9 +91,9 @@
                             <circle cx="13" cy="13" r="2" fill="#ffffff" class="brand-animate" />
                             <path d="M 14 24 L 24 24 L 14 44 Z" fill="#FFFFFF" />
                             <circle cx="24" cy="24" r="3" fill="#000000" />
-                        </svg> <img src="images/logo.png" alt="." class="hide"> <span class="hidden-folded inline">pulse</span>
+                        </svg> <img src="{{asset('images/logo.png')}}" alt="." class="hide"> <span class="hidden-folded inline">خدمة إرسال الأغاني</span>
                     </a>
-                    <ul class="nav navbar-nav pull-right">
+                    <ul class="nav navbar-nav pull-right" style="direction: ltr">
                         <li class="nav-item"><a data-toggle="modal" data-target="#aside" class="nav-link"><i class="material-icons">menu</i></a>
                         </li>
                     </ul>
@@ -147,7 +153,7 @@
                                                         </div>
                                                         <div class="item-author text-sm text-ellipsis"><span class="item-meta-stats text-xs"><i class="fa fa-share" ></i>{{$song_art->number_of_send}}</span>
                                                         <div class="" onclick="modal_form_send('{{$song_art->song_code}}')" style="float: right" ><span class="">
-                                                  <i class="fa fa-share"></i>Send</span>
+                                                  <i class="fa fa-share"></i>إرسال</span>
                                               </div>
                                                         </div>
 
@@ -180,7 +186,7 @@
                             <div class="col-xs-12">
                                 <div class="item r" data-id="item-11" data-src="http://api.soundcloud.com/tracks/218060449/stream?client_id=a10d44d431ad52868f1bce6d36f5234c">
                                     <div class="item-media">
-                                        <a href="" class="item-media-content" style="background-image: url('{{asset('images/artists/'.$more->photo_name)}}')"></a>
+                                        <a  class="item-media-content" style="background-image: url('{{asset('images/artists/'.$more->photo_name)}}')"></a>
                                     </div>
                                     <div class="item-info">
                                         <div class="item-title text-ellipsis"><a href="{!! route('artist', ['id'=>$more->id]) !!}">{{$more->original_name}}</a>
@@ -352,7 +358,7 @@
     <div class="modal-dialog">
         <div class="modal-content fade-down">
             <div class="modal-header">
-                <h5 class="modal-title">Share</h5>
+                <h5 class="modal-title">إرسال</h5>
             </div>
             <div class="modal-body p-lg">
                 <div id="share-list" class="m-b"><a href="#" class="btn btn-icon btn-social rounded btn-social-colored indigo" title="Facebook"><i class="fa fa-facebook"></i> <i class="fa fa-facebook"></i></a> <a href="#" class="btn btn-icon btn-social rounded btn-social-colored light-blue" title="Twitter"><i class="fa fa-twitter"></i> <i class="fa fa-twitter"></i></a> <a href="#" class="btn btn-icon btn-social rounded btn-social-colored red-600" title="Google+"><i class="fa fa-google-plus"></i> <i class="fa fa-google-plus"></i></a> <a href="#" class="btn btn-icon btn-social rounded btn-social-colored blue-grey-600" title="Trumblr"><i class="fa fa-tumblr"></i> <i class="fa fa-tumblr"></i></a> <a href="#" class="btn btn-icon btn-social rounded btn-social-colored red-700" title="Pinterst"><i class="fa fa-pinterest"></i> <i class="fa fa-pinterest"></i></a>
@@ -365,9 +371,26 @@
     </div>
 </div>
 </div>
-@include('modales/formsend')
+<script type="text/javascript">
+    var path = "{{ route('autocomplete') }}";
+    $('input.typeahead').typeahead({
+        source:  function (query, process) {
+        return $.get(path, { query: query }, function (data) {
+                return process(data);
+            });
+        }
+    });
+</script>
+
 <script src="{{asset('scripts/app.min.js')}}"></script>
+@if(Session::has('uniqueid_profile'))
+
+@include('modales/formsend_profile')
+@include('scripts/fuctions_profile')
+@else 
+@include('modales/formsend')
 @include('scripts/fuctions')
+@endif
 </body>
 <!-- Mirrored from flatfull.com/themes/pulse/  by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 24 Apr 2017 06:53:51 GMT -->
 

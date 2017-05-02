@@ -40,3 +40,17 @@ Route::post('check-pin-code-one-time', ['as' => 'check_pin_code_one_time', 'uses
 
 Route::get('subscribe', ['as' => 'subscribe', 'uses' => 'GuestController@subscribe']);
 Route::get('autocomplete',array('as'=>'autocomplete','uses'=>'GuestController@autocomplete'));
+
+Auth::routes();
+
+Route::get('admin/dashboard', ['as' => 'dashboard', 'uses' => 'HomeController@index']);
+Route::get('admin/dashboard/categories', ['as' => 'manage_categories_index', 'uses' => 'AdminController@categories_index']);
+Route::get('admin/dashboard/categories/create', ['as' => 'create_category', 'uses' => 'AdminController@categories_create']);
+Route::post('admin/dashboard/categories/create', ['as' => 'create_category', 'uses' => 'AdminController@categories_store']);
+Route::get('admin/dashboard/categories/view/{id}', ['as' => 'view_category', 'uses' => 'AdminController@categories_view']);
+Route::post('admin/dashboard/categories/view/{id}', ['as' => 'view_category', 'uses' => 'AdminController@categories_update']);
+Route::get('admin/dashboard/categories/publish/{id}', ['as' => 'publish_category', 'uses' => 'AdminController@publish_category']);
+
+
+
+

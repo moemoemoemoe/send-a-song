@@ -4,7 +4,7 @@
 
 <head>
 	<meta charset="utf-8">
-	<title>SendaSong | Home</title>
+	<title>SendaSong | search</title>
 	<meta name="description" content="Music, Musician, Bootstrap">
 	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimal-ui">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -22,11 +22,11 @@
 	<link rel="stylesheet" href="{{asset('css/styles/app.min.css')}}">
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.1/bootstrap3-typeahead.min.js"></script>  
-
+ <link rel="stylesheet" href="{{asset('css/styles/app.rtl.css')}}">
 
 </head>
 
-<body>
+<body dir="rtl">
 	<div class="app dk" id="app">
 		<div id="aside" class="app-aside modal fade nav-dropdown">
 			<div class="left navside grey dk" data-layout="column">
@@ -44,7 +44,7 @@
     
       
         {!! $msg_user !!}
-@else pulse
+@else خدمة إرسال الأغاني
     @endif </span>
 					</a>
 				</div>
@@ -57,16 +57,13 @@
 							
 							@endif</span>
 							</li>
-							<li class="active"><a href="{!! route('home') !!}"><span class="nav-icon"><i class="material-icons">play_circle_outline</i></span> <span class="nav-text">Discover</span></a>
+							<li class="active"><a href="{!! route('home') !!}"><span class="nav-icon"><i class="material-icons">play_circle_outline</i></span> <span class="nav-text">الصفحة الرئيسية</span></a>
 							</li>
-							<li><a href="browse.html"><span class="nav-icon"><i class="material-icons">sort</i></span> <span class="nav-text">Browse</span></a>
+							
+							<li><a href="{!! route('all_artist') !!}"><span class="nav-icon"><i class="material-icons">portrait</i></span> <span class="nav-text">الفنانين</span></a>
 							</li>
-							<li><a href="chart.html"><span class="nav-icon"><i class="material-icons">trending_up</i></span> <span class="nav-text">Charts</span></a>
-							</li>
-							<li><a href="{!! route('all_artist') !!}"><span class="nav-icon"><i class="material-icons">portrait</i></span> <span class="nav-text">Artist</span></a>
-							</li>
-							<li><input type="text" class="form-control typeahead" id="keyword" placeholder="Type keyword" style="text-align: center;" /> 
-							<span class="input-group-btn"><div class="form-control" style="text-align: center;" onclick="search()">Search</div></span>
+							<li><input type="text" class="form-control typeahead" id="keyword" placeholder="Type keyword" style="text-align: center;" autocomplete="off" /> 
+							<span class="input-group-btn"><div class="form-control" style="text-align: center;" onclick="search()">البحث</div></span>
 							</li>
 							<li class="nav-header hidden-folded m-t"><span class="text-xs text-muted">Your collection</span>
 							</li>
@@ -79,13 +76,7 @@
 						</ul>
 					</nav>
 				</div>
-				<div data-flex-no-shrink>
-					<div class="nav-fold dropup"><a data-toggle="dropdown"><span class="pull-left"><img src="{{asset('images/a3.jpg')}}" alt="..." class="w-32 img-circle"></span> <span class="clear hidden-folded p-x p-y-xs"><span class="block _500 text-ellipsis">Rachel Platten</span></span></a>
-						<div class="dropdown-menu w dropdown-menu-scale"><a class="dropdown-item" href="profile.html#profile"><span>Profile</span></a> <a class="dropdown-item" href="profile.html#tracks"><span>Tracks</span></a> <a class="dropdown-item" href="profile.html#playlists"><span>Playlists</span></a> <a class="dropdown-item" href="profile.html#likes"><span>Likes</span></a>
-							<div class="dropdown-divider"></div><a class="dropdown-item" href="docs.html">Need help?</a> <a class="dropdown-item" href="signin.html">Sign out</a>
-						</div>
-					</div>
-				</div>
+			
 			</div>
 		</div>
 		<div id="content" class="app-content white bg box-shadow-z2" role="main">
@@ -99,9 +90,9 @@
 							<circle cx="13" cy="13" r="2" fill="#ffffff" class="brand-animate" />
 							<path d="M 14 24 L 24 24 L 14 44 Z" fill="#FFFFFF" />
 							<circle cx="24" cy="24" r="3" fill="#000000" />
-						</svg> <img src="{{asset('images/logo.png')}}" alt="." class="hide"> <span class="hidden-folded inline">pulse</span>
+						</svg> <img src="{{asset('images/logo.png')}}" alt="." class="hide"> <span class="hidden-folded inline">خدمة إرسال الأغاني</span>
 					</a>
-					<ul class="nav navbar-nav pull-right">
+					<ul class="nav navbar-nav pull-right" style="direction: ltr">
 						<li class="nav-item"><a data-toggle="modal" data-target="#aside" class="nav-link"><i class="material-icons">menu</i></a>
 						</li>
 					</ul>
@@ -130,7 +121,7 @@
     
     @endif
 <br/>
-							<h1 class="inline m-a-0">Result Search</h1>
+							<h1 class="inline m-a-0">نتائج البحث </h1>
 						</div>
 						<div class="row-col">
 		<div class="p-a-lg h-v row-cell v-m">
@@ -153,7 +144,7 @@
 											</div>
 											<div class="item-info">
 												<div class="item-title text-ellipsis">{{$res->original_name}}
-													<div class="text-sm text-muted" onclick="modal_form_send('{{$res->song_code}}')">Share</div>
+													<div class="text-sm text-muted" onclick="modal_form_send('{{$res->song_code}}')">إرسال</div>
 												</div>
 											</div>
 										</div>
@@ -172,10 +163,10 @@
 			</div>
 			<form  class="m-b-md">
 						<div class="row-col">
-				<div class="col-lg-9 b-r no-border-md">
+				<div class="col-lg-9  b-r no-border-md">
 					<div class="padding">
-						<h2 class="widget-title h4 m-b">Most Sending</h2>
-						<div class="owl-carousel owl-theme owl-dots-center" data-ui-jp="owlCarousel" data-ui-options="{
+						<h2 class="widget-title h4 m-b">الأكثر ارسلا</h2>
+						<div style="direction: ltr" class="owl-carousel owl-theme owl-dots-center" data-ui-jp="owlCarousel" data-ui-options="{
 						margin: 20,
 						responsiveClass:true,
 						responsive:{
@@ -189,7 +180,7 @@
 		}"> 
 
 		@foreach($songs_most as $most)
-		<div class="">
+		<div class="" >
 			<div class="item r" data-id="item-2" data-src="http://api.soundcloud.com/tracks/259445397/stream?client_id=a10d44d431ad52868f1bce6d36f5234c">
 				<div class="item-media item-media-4by3">
 					<a href=" " class="item-media-content" style="background-image: url('{{asset('images/artists/'.$most->artist->photo_name)}}')"></a>
@@ -198,7 +189,7 @@
 					</div>
 				</div>
 				<div class="item-info">
-					<div class="item-overlay bottom text-right"><i onclick="modal_form_send('{{$most->song_code}}')" class="fa fa-share">&nbsp;</i><span style="font-weight:400;color:white;" onclick="modal_form_send('{{$most->song_code}}')" >Share</span></a>
+					<div class="item-overlay bottom text-right"><i onclick="modal_form_send('{{$most->song_code}}')" class="fa fa-share">&nbsp;</i><span style="font-weight:400;color:white;" onclick="modal_form_send('{{$most->song_code}}')" >إرسال</span></a>
 						<div class="dropdown-menu pull-right black lt"></div>
 					</div>
 					<div class="item-title text-ellipsis"><a href=" ">{{$most->artist->original_name}}</a>
@@ -233,7 +224,7 @@
 	<div class="modal-dialog">
 		<div class="modal-content fade-down">
 			<div class="modal-header">
-				<h5 class="modal-title">Share</h5>
+				<h5 class="modal-title">إرسال</h5>
 			</div>
 			<div class="modal-body p-lg">
 				<div id="share-list" class="m-b"><a href="#" class="btn btn-icon btn-social rounded btn-social-colored indigo" title="Facebook"><i class="fa fa-facebook"></i> <i class="fa fa-facebook"></i></a> <a href="#" class="btn btn-icon btn-social rounded btn-social-colored light-blue" title="Twitter"><i class="fa fa-twitter"></i> <i class="fa fa-twitter"></i></a> <a href="#" class="btn btn-icon btn-social rounded btn-social-colored red-600" title="Google+"><i class="fa fa-google-plus"></i> <i class="fa fa-google-plus"></i></a> <a href="#" class="btn btn-icon btn-social rounded btn-social-colored blue-grey-600" title="Trumblr"><i class="fa fa-tumblr"></i> <i class="fa fa-tumblr"></i></a> <a href="#" class="btn btn-icon btn-social rounded btn-social-colored red-700" title="Pinterst"><i class="fa fa-pinterest"></i> <i class="fa fa-pinterest"></i></a>

@@ -46,20 +46,20 @@
                 <div class="p-a-md" id="enter_phone_form">
                     <div>
                         <h4>Subscribe</h4>
-                        <p class="text-muted m-y">Enter your phone number below and we will send you a pin code verification.</p>
+                        <p class="text-muted m-y">أدخل رقم هاتفك أدناه وسنرسل إليك رمز بين</p>
                     </div>
                    
                         <div class="form-group">
                         <input type="text"  class="form-control" placeholder="961" disabled style="text-align: center;" />
-                            <input type="tel" id="phone_number" placeholder="Enter your mobile number" class="form-control" required style="text-align: center">
+                            <input type="tel" id="phone_number" placeholder="أدخل رقم هاتفك " class="form-control" required style="text-align: center">
                         </div>
-                        <button id="btn_phone"  class="btn  btn-block p-x-md" style="background-color: #5cb85c ; color: #fff" onclick="check_phone_number()">Subscribe</button>
+                        <button id="btn_phone"  class="btn  btn-block p-x-md" style="background-color: #5cb85c ; color: #fff" onclick="check_phone_number()">إشترك </button>
                    <span  id="response" style="text-align: center"></span>
                    
                 </div>
                  <div class="p-a-md panel" id="resp"  style="display: none;">
                     <div >
-                        <h4>Subscribe</h4>
+                        <h4>إشترك </h4>
                         <p class="text-muted m-y" id="success"></p>
                     </div>
                    
@@ -70,20 +70,20 @@
 
                  <div class="p-a-md" style="display: none" id="enter_pin_form">
                     <div>
-                        <h4>Subscribe</h4>
-                        <p class="text-muted m-y">Enter the 4 digits pin code below </p>
+                        <h4>إشترك </h4>
+                        <p class="text-muted m-y">أدخل الرمز المؤلف من 4 أرقام الذي وصلك </p>
                     </div>
                    
                         <div class="form-group">
-                            <input type="tel" id="pin_code" placeholder="Enter pin code" class="form-control" required style="text-align: center">
+                            <input type="tel" id="pin_code" placeholder="أدخل الرمز السري " class="form-control" required style="text-align: center">
                         </div>
-                        <button id="btn_pin"  class="btn  btn-block p-x-md" style="background-color: #5cb85c ; color: #fff" onclick="show_confirm_modal()">Check</button>
+                        <button id="btn_pin"  class="btn  btn-block p-x-md" style="background-color: #5cb85c ; color: #fff" onclick="show_confirm_modal()">تحقق </button>
                    
                    
                 </div>
                 <div class="p-a-md panel" id="pinc" style="display: none;">
                     <div >
-                        <h4>Subscribe</h4>
+                        <h4>إشترك</h4>
                         <p class="text-muted m-y" id="reso"></p>
                     </div>
                    
@@ -110,7 +110,7 @@
 
             </div>
             <div class="col-md-9 col-sm-8 col-xs-8">
-              You are about to subscribe to "Foodoo" for 1.5 USD/week through your <span id="op_name"></span> account and it will be automatically renewed every week.
+              You are about to subscribe to "sendasong" for 4 USD/week through your <span id="op_name"></span> account and it will be automatically renewed every week.
               Click continue to proceed.
             </div>
           </div>
